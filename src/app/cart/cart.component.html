@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<!-- <app-navbar></app-navbar> -->
+
+<body  style="direction: ltr;">
+    <br>
+    <div class="container">
+        <h2 class="p-3 " style="direction:rtl">سلة الشراء </h2>
+       <div class="row MAINROW">
+            <div class="col-lg-3 col-md-4">
+                <h1 style="font-weight: bold;">إجمالي سلة المشتريات</h1>
+                <div class="productDetails">                    
+                    <div class="row">
+                        <div  style="font-weight: bold;" class="col-4">المجموع</div>
+                        <div class="col-8">{{total}} جنيه</div>
+                    </div>
+                    <div class="row" style="border-top: 1px solid rgb(221, 221, 221);">
+                        <div  style="font-weight: bold;" class="col-4"> الشحن</div>
+                        <div class="col-8 deliverOption">
+                            <span>شحن مجاني</span><br><br>
+                            <span>سيتم تحديث خيارات الشحن أثناء السداد.</span><br><br>
+                            <span>حساب الشحن</span>
+                        </div>
+                    </div>
+                    <div class="row" style="border-top: 1px solid rgb(221, 221, 221);">
+                        <div style="font-weight: bold;" class="col-4">الاجمالى</div>
+                        <div class="col-8">{{total}} جنيه</div>
+                    </div>
+                </div>
+                <button>التقدم لأتمام الطلب</button>
+            </div>
+            <!-- PRODUCT card -->
+            <div class="col-lg-9 col-md-8" >
+                <div class="row mainROW">
+                   <div >
+                    <div class="row topROW" style="border-bottom: 1px solid rgb(221, 221, 221); font-weight: bold;">
+                        <div class="col ">الإجمالى</div>
+                        <div class="col">الكمية</div>
+                        <div class="col">السعر</div>
+                        <div class="col">اسم المنتج</div>
+                        <div class="col">المنتج</div>
+                    </div>
+                    <div class="row" *ngFor="let pro of cart; let index=index">
+                        <div class="col">
+                           {{pro.item.Price*pro.quantity}}
+                        </div>
+                        <div class="col">
+                            <div class="quantityDiv">
+                                <button (click)="decrease(index)">-</button>
+                                <input value="{{pro.quantity}}">                              
+                                <button (click)="increase(index)">+</button>
+                            </div>
+                        </div>
+                        <div class="col">{{pro.item.Price}}</div>
+                        <div class="col">{{pro.item.Name}}</div>
+                        <div class="col">
+                            <img src="{{pro.item.Imgs[0]}}" alt="">
+                        </div>
+                    </div>
+                   </div>
+                    <div class="row btn-row" style="border-top: 1px solid rgb(221, 221, 221);">
+                        <button  (click)="disAbleBtn()" #disbtn disabled class="btn mx-3 ">تحديث السلة</button>
+                        <button  #dbtn (click)="deleteall()" class="btn mx-3 bg-success  text-light "> <i class=" fa fa-trash recycl"></i> مسح السلة</button>
+                        <p #space style="display: none;">السله فارغه!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

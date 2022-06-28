@@ -1,0 +1,63 @@
+<div class="cont">
+    <form [formGroup]="regestrationLogInForm"  class="form-cont">
+        <div class="form-groupd email-cont">
+            <label class="email-label">البريد الالكتروني</label>
+            <input 
+            type="email" 
+            #email
+            [class.is-invalid]="emailFeld?.invalid &&emailFeld?.touched"
+            pattern="^\w+@\w+.com$"
+            formControlName="email" 
+            placeholder="البريد الإلكتروني"
+            dir="ltr"
+            class="form-control email-input">
+            <div class="text-erorr-contan">
+                <small class="text-danger text-erorr" *ngIf="emailFeld?.invalid &&emailFeld?.touched">This Field is Required*</small>
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="emailFeld?.errors?.['forbiddenEmail']">
+                your Email must have @ .com 
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group email-cont">
+            <label class="email-label">كلمة السر</label>
+            <input 
+            type="password" 
+            [class.is-invalid]="passwordFeld?.invalid &&passwordFeld?.touched"
+            formControlName="passward"
+            placeholder="كلمة السر"
+            dir="ltr"
+            class="form-control email-input">
+            <div class="text-erorr-contan" *ngIf="passwordFeld?.invalid &&passwordFeld?.touched">
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="passwordFeld?.errors?.['required']">
+                هذا الحقل مطلوب*</small>
+
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="passwordFeld?.errors?.['minlength']">
+                *Passward minlength is 8 characters</small>
+
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="passwordFeld?.errors?.['forbiddenPassward']">
+                your passward must be 
+                </small>
+            </div>
+            
+        </div>
+
+        <div class="form-check check-div">
+            <input type="checkbox" formControlName="check" class="form-check check-input mb-4">
+            <label class="form-check-label check-label mt-1">أوافق علي الشروط الاستخدام وسياسه الخصوصية</label>
+        </div>
+
+        <div class="form-group supm">
+            <input type="submit"  name="حساب جديد" value="حساب جديد" >
+        </div>
+
+    </form>
+</div>

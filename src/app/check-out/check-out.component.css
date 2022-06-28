@@ -1,0 +1,92 @@
+
+*::selection {
+    background: #a51731;
+    color: white;
+}
+.container {
+    padding: 20px 0;
+}
+.container .row .myOrder {
+    padding: 0;
+    border: 1px solid #ddd;
+    padding: 20px;
+    height: fit-content;
+}
+.container .row .myOrder h1 {
+    text-align: right;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+.container .row .myOrder .table {
+    width: 100%;
+}
+.container .row .myOrder .table tr {
+    direction: rtl;
+    padding: 50px;
+    line-height: 35px;
+}
+.container .row .myOrder .checkOutDiv {
+    direction: rtl;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+}
+.container .row .myOrder .checkOutDiv .form-check {
+    display: flex;
+}
+.container .row .myOrder .checkOutDiv .form-check .form-check-label {
+    margin-right: 40px;
+}
+.container .row .myOrder .checkOutDiv .form-check .form-check-input {
+    box-shadow: none;
+}
+.container .row .myOrder .checkOutDiv .check1 {
+    background-color: #ddddfd;
+    margin: 10px 0;
+    padding: 10px;
+}
+.container .row .myOrder .checkOutDiv .check2 {
+    background-color: #ddddfd;
+    padding: 20px;
+    margin-top: 10px;
+}
+.container .row .myOrder .checkOutDiv .check2 input {
+    outline: none;
+    border: 1px solid #bebebe;
+    padding: 5px;
+    margin-top: 10px;
+}
+.container .row .myOrder .donOrderBTN {
+    background-color: #a51731;
+    color: white;
+    width: 100%;
+    padding: 8px;
+    border: none;
+    margin-top: 20px;
+    border-radius: 2px;
+    font-weight: bold;
+}
+.container .row .formDiv {
+    direction: rtl;
+    height: fit-content;
+    padding: 30px;
+}
+.container .row .formDiv h1 {
+    font-size: 20px;
+}
+.container .row .formDiv form .row {
+    margin: 15px 0;
+}
+.container .row .formDiv form .row input, .container .row .formDiv form .row select {
+    box-shadow: none;
+    border-radius: 0;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+@media only screen and (max-width: 992px) {
+    .container .row {
+        display: flex;
+        flex-direction: column-reverse;
+   }
+}

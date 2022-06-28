@@ -1,0 +1,75 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    direction: rtl;
+    text-align: start;
+}
+
+.account-detal-div{
+    width: 66%;
+    position: absolute;
+    top: 200px;
+    color: #777;
+    font-weight: 500;
+}
+
+.account-detal-div .first-last-name{
+    width: 95%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.account-detal-div .first-last-name .f-l-name{
+    width: 45%;
+}
+
+.input-notes{
+    margin-bottom: 15px;
+}
+
+.chang-passward{
+    margin: 15px 0;
+}
+
+hr{
+    width: 95%;
+    margin-bottom: 15px;
+}
+
+label{
+    display: block;
+    margin: 3px 0;
+}
+
+input{
+    width: 95%;
+    height: 40px;
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 5px;
+}
+
+input:focus{
+    outline: none;
+}
+.supm{
+    width: 100%;
+    margin: auto;
+}
+
+.supm input{
+    width: 150px;
+    height: 40px;
+    background-color: #a51731;
+    color: #fff;
+    border: 1px solid #a51731;
+    border-radius: 3px;
+    text-align: center;
+    font-weight: bold;
+    margin: 10px 0;
+}
+.supm input:hover{
+    background-color: #fff;
+    color: #a51731;
+}

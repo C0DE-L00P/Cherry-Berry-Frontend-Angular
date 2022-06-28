@@ -1,0 +1,25 @@
+<!-- <app-navbar></app-navbar> -->
+
+<br><br>
+<div class="container">
+    <div class="row">
+        <img src="../assets/img/offers.png" alt="">
+    </div>
+</div>
+
+<br><br>
+<div class="container-fluid  ">
+    <div class="row row-cols-1 row-cols-md-3 g-4  ">
+
+        <div *ngFor="let pro of products" class="card m-4 p-1 imgcart " style="width: 18rem;">
+            <img src="{{pro.Imgs[0]}}" class="card-img-top w-100  " alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center bg-light p-1 m-1">{{pro.Name}}</h5>
+              <!-- <p class="card-text text-center bg-light p-1">{{pro.DescBullets}}</p> -->
+              <p style="color:#a51731; font-weight: bold;   " class="card-text text-center m-2"><i class="fab fa-searchengin dollar"></i> EGP {{pro.Price}}</p>
+               <button  class="btncart">اضافه الي السلة</button>
+              <!-- <a href="#" class="btn  w-100 btncart">Add to cart </a> -->
+            </div>
+          </div>
+    </div>
+</div>

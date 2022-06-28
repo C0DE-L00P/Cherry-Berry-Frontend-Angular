@@ -1,0 +1,22 @@
+<div>
+    <h3>حسابي</h3>
+    <nav>
+        <a routerLink="/logInPage/signUp" (click)="hasabackground=true;hasabackgrounde=false"  [class.active]="hasabackground">حساب جديد</a>
+        <a routerLink="/logInPage/logIn" (click)="hasabackground=false;hasabackgrounde=true" [class.active]="hasabackgrounde">تسجيل دخول</a>
+    </nav>
+
+    <router-outlet></router-outlet>
+    <br><br><br>
+
+    <div class="d-none">
+        <div class="logIn-hr">
+            <hr>
+            <p>او تسجيل الدخول بواسطة</p>
+            <hr>
+        </div>
+        <div class="btn-login">
+            <div>Google</div>
+            <div>Facebook</div>
+        </div>
+    </div>
+</div>

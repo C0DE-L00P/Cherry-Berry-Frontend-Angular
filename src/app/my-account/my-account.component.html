@@ -1,0 +1,28 @@
+<div class="container-fluid account-deraction " style="height: 120vh; overflow-x: hidden;">
+    <div class="top-account">
+        <h3>حسابي</h3>
+    </div>
+
+    <div class="d-flex flex-row">
+        <aside>
+            <ul>
+                <li><a routerLink="/myAccount/dashboard" (click)="hasabackground=true;hasabackgrounde=false"
+                        [class.active]="hasabackground">لوحة التحكم</a></li>
+                <li><a routerLink="/myAccount/orders" (click)="hasabackground=true;hasabackgrounde=false"
+                        [class.active]="hasabackground">الطلبات</a></li>
+                <!-- <li><a routerLink="/download">التنزيلات</a></li> -->
+                <li><a routerLink="/myAccount/addresses" (click)="hasabackground=true;hasabackgrounde=false"
+                        [class.active]="hasabackground">العناوين</a></li>
+                <li><a routerLink="/myAccount/paymentMethods" (click)="hasabackground=true;hasabackgrounde=false"
+                        [class.active]="hasabackground">طرق الدفع</a></li>
+                <li><a routerLink="/myAccount/accoontDetails" (click)="hasabackground=true;hasabackgrounde=false"
+                        [class.active]="hasabackground">تفاصيل الحساب</a></li>
+                <li><a routerLink="/myAccount/logOutSite" (click)="hasabackground=true;hasabackgrounde=false"
+                        [class.active]="hasabackground">تسجيل الخروج</a></li>
+            </ul>
+        </aside>
+        <div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

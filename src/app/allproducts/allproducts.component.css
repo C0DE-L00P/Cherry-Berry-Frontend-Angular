@@ -1,0 +1,51 @@
+*{
+    font-family: "Almarai", sans-serif;
+ }
+ *::selection {
+    background: #a51731;
+    color: white;
+}
+
+.btncart{
+    border-radius: 12px;
+    color: white;
+    background-color: #a51731;
+    border: none;
+    width: 100%;
+    padding: 3px;
+    transition: transform .6s;
+    
+}
+
+.btncart2{
+    border-radius: 12px;
+    color: white;
+    background-color: #2c2c2c;
+    border: none;
+    width: 100%;
+    padding: 3px;
+    transition: transform .6s;
+    
+}
+
+.btncart2:hover{
+    background-color: black;
+    /* transform:  */
+  
+}
+
+.btncart:hover{
+    background-color:#811328;
+    /* transform:  */
+  
+}
+
+.imgcart{
+    transition: transform .3s;
+    cursor: pointer;
+    border-color: #9c92949d;
+}
+.imgcart:hover{
+    transform:scale(1.1);
+    border-width: 2px;
+}

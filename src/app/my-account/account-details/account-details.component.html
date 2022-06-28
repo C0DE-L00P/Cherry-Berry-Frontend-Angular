@@ -1,0 +1,104 @@
+<div class="account-detal-div">
+    <form action="" [formGroup]="regestrationLogInForm" (ngSubmit)="onSubmit()">
+        <div class="first-last-name">
+            <div class="form-groupd f-l-name">
+                <label for="">الاسم الاول</label>
+                <input type="text"
+                [class.is-invalid]="firstNameFeld?.invalid &&firstNameFeld?.touched"
+                formControlName="firstName" 
+                #firstName
+                value="User.firstName" 
+                class="form-control">
+                <div class="text-erorr-contan" *ngIf="firstNameFeld?.invalid &&firstNameFeld?.touched">
+                    <small 
+                    class="text-danger text-erorr" 
+                    *ngIf="firstNameFeld?.errors?.['required']">
+                    هذا الحقل مطلوب*</small>
+                    
+                </div>
+            </div>
+    
+            <div class="form-groupd f-l-name">
+                <label for="">اسم العائله</label>
+                <input type="text"
+                [class.is-invalid]="lastNameFeld?.invalid &&lastNameFeld?.touched"
+                formControlName="lastName"
+                #lastName 
+                value="User.lastName"
+                class="form-control">
+                <div class="text-erorr-contan" *ngIf="lastNameFeld?.invalid &&lastNameFeld?.touched">
+                    <small 
+                    class="text-danger text-erorr" 
+                    *ngIf="lastNameFeld?.errors?.['required']">
+                    هذا الحقل مطلوب*</small>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-groupd">
+            <label for="">اسم العرض</label>
+            <input type="text"
+            #nameShow 
+            value="User.nameShow"
+            >
+
+            <p class="input-notes">ستكون هذه هي الطريقة التي سيتم بها عرض اسمك في قسم الحساب وفي المراجعات</p>
+        </div>
+
+        <div class="form-groupd">
+            <label for="">البريد الالكتروني</label>
+            <input 
+
+            type="email" 
+            [class.is-invalid]="emailFeld?.invalid &&emailFeld?.touched"
+            formControlName="email" 
+            placeholder="Email"
+            #email 
+            value="User.email"
+            class="form-control email-input">
+            <div class="text-erorr-contan">
+                <small class="text-danger text-erorr" *ngIf="emailFeld?.invalid &&emailFeld?.touched">This Field is Required*</small>
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="emailFeld?.errors?.['forbiddenEmail']">
+                your Email must have @ .com 
+                </small>
+            </div>
+        </div>
+
+        <p class="chang-passward">تغيير كلمة السر</p>
+
+        <hr>
+
+        <div class="form-groupd">
+            <label for="">كلمة المرور الحالية (اتركها فارغة لتركها دون تغيير)</label>
+            <input type="password">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">كلمة مرور جديدة (اتركها فارغة لتركها دون تغيير)</label>
+            <input type="password" formControlName="password" 
+            #password 
+            value="User.password"
+            class="form-control">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">تأكيد كلمة المرور الجديدة</label>
+            <input type="password" formControlName="confirmPassword"
+            #confirmPassword 
+            value="User.confirmPassword" class="form-control">
+
+            <small class="text-danger" *ngIf="regestrationLogInForm.errors?.['misMatch']">Password and confirm password must be matched</small>            
+        </div>
+
+        <div class="form-group supm">
+            <input type="submit" 
+            name="حفظ النغيرات"
+            value="حفظ النغيرات"
+            #check 
+            value="User.check" >
+        </div>
+    </form>
+</div>

@@ -1,0 +1,128 @@
+* {
+    font-family: "Almarai", sans-serif;
+}
+*::selection {
+    background: #a51731;
+    color: white;
+}
+.offcanvas .offcanvas-header h1 {
+    text-align: center;
+    margin: 0 auto;
+    font-size: 25px;
+}
+.offcanvas .basket {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: white;
+    height: 100%;
+}
+.offcanvas .basket .overFlowDiv {
+    background-color: #a51731;
+    height: 50%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background-color: white;
+    scroll-snap-align: start;
+    direction: rtl;
+    padding: 20px;
+}
+.offcanvas .basket .overFlowDiv .row img {
+    width: 100%;
+}
+.offcanvas .basket .overFlowDiv .row div {
+    display: flex;
+    flex-direction: column;
+}
+.offcanvas .basket .overFlowDiv .row div .quantityDiv {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.offcanvas .basket .overFlowDiv .row div .quantityDiv input {
+    width: 30px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    outline: none;
+    text-align: center;
+    margin: 0 1px;
+}
+.offcanvas .basket .overFlowDiv .row div .quantityDiv button {
+    background-color: transparent;
+    border: 1px solid #ddd;
+}
+.offcanvas .basket hr {
+    margin: 10px;
+}
+.offcanvas .basket .bottomContent {
+    padding: 10px;
+}
+.offcanvas .basket .bottomContent .totalPrice, .offcanvas .basket .bottomContent .deliverAddress, .offcanvas .basket .bottomContent .totalPriceAvterService {
+    display: flex;
+    justify-content: space-between;
+}
+.offcanvas .basket .bottomContent .totalPrice span, .offcanvas .basket .bottomContent .deliverAddress span, .offcanvas .basket .bottomContent .totalPriceAvterService span {
+    direction: rtl;
+}
+.offcanvas .basket .bottomContent .totalPriceAvterService {
+    border-top: 1px dashed gray;
+    margin-top: 10px;
+    padding: 10px 0;
+}
+.offcanvas .basket .bottomContent .buttonsDiv .btn {
+    border-radius: 0;
+}
+.offcanvas .basket .bottomContent .buttonsDiv .btnClose {
+    width: 100%;
+    background-color: black;
+    color: white;
+}
+.offcanvas .basket .bottomContent .buttonsDiv .flexBTN {
+    display: flex;
+    flex-direction: row;
+    margin-top: 10px;
+    justify-content: space-between;
+    outline: none;
+}
+.offcanvas .basket .bottomContent .buttonsDiv .flexBTN button {
+    width: 49%;
+}
+.offcanvas .basket .bottomContent .buttonsDiv .flexBTN .not-dark {
+    background-color: #a51731;
+    /* border: 1px solid black; */
+    color: white;
+    width: 50%;
+}
+.offcanvas .basket .bottomContent .buttonsDiv .flexBTN .btnCart {
+    background-color: black;
+    color: white;
+}
+.offcanvas .EMPTYoffcanvas-body {
+    text-align: center;
+    padding: 50px 20px;
+}
+.offcanvas .EMPTYoffcanvas-body .backTOshopping {
+    background-color: #a51731;
+    padding: 5px 30px;
+    font-weight: bold;
+    border: none;
+    border-radius: 2px;
+    color: #f3a05d;
+}
+.offcanvas .EMPTYoffcanvas-body .continueSHopping {
+    width: 100%;
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border: none;
+    border-radius: 2px;
+    margin-top: 250px;
+}
+.pen{
+ color:  gray;
+}
+.sala{
+    color:  gray;
+}

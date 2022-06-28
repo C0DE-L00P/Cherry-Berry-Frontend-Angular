@@ -1,0 +1,51 @@
+/* *{
+    font-family: "Almarai", sans-serif;
+    }
+ *::selection {
+    background: #a51731;
+    color: white;
+   }
+
+.nav1{
+  background-color: #a51731;
+}
+
+    .navblack:hover{
+         background-color:black;
+       
+     
+    }
+
+    .dropblack{
+      color: white;
+      background-color: black;
+    }
+
+    .btnserch{
+      border: none;
+      background-color:  #a51731;
+      color: white;
+      padding-left: 22px;
+      font-weight: bolder;
+      padding-right: 22px;
+
+    }
+
+    .nav1,nav2{
+      background-color: #a51731;
+    }
+
+    .head{
+      font-size: 22px;
+      color: rgba(0, 0, 0, 0.651);
+    }
+.log:hover{
+  background-color: white;
+  color: black;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    margin-top: 0%;
+    padding-top: 0%;
+ } */

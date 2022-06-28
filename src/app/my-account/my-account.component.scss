@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.account-deraction{
+    direction: rtl;
+}
+
+.account-deraction .top-account{
+    width: 100%;
+    text-align: center;
+    margin: 20px;
+}
+
+.account-deraction aside{
+    width: 30%;
+    margin: 40px 10px;
+    position: relative;
+    right: 0;
+}
+
+.account-deraction aside ul{
+    text-align: right;
+    list-style: none;
+}
+
+.account-deraction aside ul li{
+    border: 1px solid rgba(0,0,0,.1);
+    // border-bottom-width: 0;
+    padding: 10px;
+    font-size: 1.1rem;
+}
+
+.account-deraction aside ul li a{
+    background-color: #fbfbfb;
+    color: #555;
+}
+.account-deraction aside ul li a:hover{
+    color: #a51731;
+    text-decoration: none;
+}
+.account-deraction aside ul li a:active{
+    color: #a51731;
+    text-decoration: none;
+}
+.active{
+    color: #a51731;
+    font-weight: bold;
+}

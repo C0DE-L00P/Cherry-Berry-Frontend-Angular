@@ -1,0 +1,22 @@
+//TODO not working on footer for some reason
+.bg-dark {
+    --bs-bg-opacity: 1;
+    background-color: #2c2c2c !important;
+}
+a:hover{
+    color: rgb(174, 172, 172) !important;
+    cursor:pointer;
+}
+*::selection {
+    background: #a51731;
+    color: white;
+    // filter: opacity(50)
+}
+.undraggable{
+    user-drag: none;
+    -webkit-user-drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+}

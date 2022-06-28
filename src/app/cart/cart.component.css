@@ -1,0 +1,131 @@
+* {
+    font-family: "Almarai", sans-serif;
+}
+*::selection {
+    background: #a51731;
+    color: white;
+}
+.container .MAINROW {
+    border: 1px solid #ddd;
+}
+.container .MAINROW h1 {
+    font-size: 20px;
+    color: black;
+    text-align: center;
+}
+.container .MAINROW .col-lg-3 {
+    padding: 30px 15px;
+}
+.container .MAINROW .col-lg-3 .productDetails {
+    border: 1px solid #ddd;
+    background-color: #f78da8 13;
+}
+.container .MAINROW .col-lg-3 .productDetails .row {
+    direction: rtl;
+    height: min-content;
+    padding: 15px;
+    width: 100%;
+    margin: 0;
+}
+.container .MAINROW .col-lg-3 button {
+    background-color: #a51731;
+    color: white;
+    border: none;
+    width: 100%;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 1px;
+}
+.container .MAINROW .col-lg-3 button:hover {
+    background-color: #811328;
+}
+.container .MAINROW .col-lg-9 {
+    padding: 40px 50px;
+}
+.container .MAINROW .col-lg-9 .mainROW {
+    height: min-content;
+    width: 100%;
+    border: 1px solid #ddd;
+    margin: 0;
+}
+.container .MAINROW .col-lg-9 .mainROW .topROW {
+    background-color: #ccedfc 33;
+}
+.container .MAINROW .col-lg-9 .mainROW .row {
+    width: 100%;
+    margin: 0 auto;
+    height: min-content;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+}
+.container .MAINROW .col-lg-9 .mainROW .row .col {
+    margin: 0 auto;
+    text-align: center;
+}
+.container .MAINROW .col-lg-9 .mainROW .row .col img {
+    width: 70%;
+}
+.container .MAINROW .col-lg-9 .mainROW .row .btn {
+    background-color: black;
+    color: #a51731;
+    font-weight: bold;
+    padding: 5px 50px;
+    border: none;
+    border-radius: 3px;
+    width: max-content;
+}
+.container .MAINROW .col-lg-9 .mainROW .quantityDiv {
+    width: 100%;
+    display: flex;
+}
+.container .MAINROW .col-lg-9 .mainROW .quantityDiv input {
+    width: 30px;
+    background-color: transparent;
+    border: 1px solid #ddd;
+    outline: none;
+    text-align: center;
+    margin: 0 1px;
+}
+.container .MAINROW .col-lg-9 .mainROW .quantityDiv button {
+    background-color: transparent;
+    border: 1px solid #ddd;
+}
+@media only screen and (max-width: 768px) {
+    .container .MAINROW {
+        display: flex;
+        flex-direction: column-reverse;
+        border: none;
+   }
+    .container .MAINROW .col-lg-9 {
+        padding: 0px;
+   }
+    .container .MAINROW .col-lg-3 {
+        padding: 0;
+        padding-top: 30px;
+   }
+}
+@media only screen and (max-width: 992px) and (min-width: 768px) {
+    .container .MAINROW .col-lg-9 {
+        padding: 40px 20px;
+   }
+}
+
+.btn-row{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-row p{
+    text-align: center;
+    direction: rtl;
+    font-weight: bold;
+    font-size: 19px;
+    color: #a51731;
+   
+}
+
+.recycl{
+    color:bisque;
+}
+

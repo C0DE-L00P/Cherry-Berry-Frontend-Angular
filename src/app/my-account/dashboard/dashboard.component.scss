@@ -1,0 +1,21 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.asid-detals{
+    direction: rtl;
+    width: 66%;
+    position: absolute;
+    top: 200px;
+    text-align: start;
+    color: #333;
+}
+.asid-detals a{
+    color: #333;
+    font-weight: 500;
+}
+.asid-detals a:hover{
+    text-decoration: none;
+    color: #a51731;
+}

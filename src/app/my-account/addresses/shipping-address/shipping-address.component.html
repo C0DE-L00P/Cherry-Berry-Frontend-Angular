@@ -1,0 +1,82 @@
+<div class="account-detal-div">
+    <form action="" [formGroup]="regestrationLogInForm">
+        <div class="first-last-name">
+            <div class="form-groupd f-l-name">
+                <label for="">الاسم الاول</label>
+                <input type="text"
+                [class.is-invalid]="firstNameFeld?.invalid &&firstNameFeld?.touched"
+                formControlName="firstName" 
+                #email
+                class="form-control">
+                <div class="text-erorr-contan" *ngIf="firstNameFeld?.invalid &&firstNameFeld?.touched">
+                    <small 
+                    class="text-danger text-erorr" 
+                    *ngIf="firstNameFeld?.errors?.['required']">
+                    هذا الحقل مطلوب*</small>
+                    
+                </div>
+            </div>
+    
+            <div class="form-groupd f-l-name">
+                <label for="">اسم العائله</label>
+                <input type="text"
+                [class.is-invalid]="lastNameFeld?.invalid &&lastNameFeld?.touched"
+                formControlName="lastName" 
+                class="form-control">
+                <div class="text-erorr-contan" *ngIf="lastNameFeld?.invalid &&lastNameFeld?.touched">
+                    <small 
+                    class="text-danger text-erorr" 
+                    *ngIf="lastNameFeld?.errors?.['required']">
+                    هذا الحقل مطلوب*</small>
+                    
+                </div>
+            </div>
+        </div>
+
+        <div class="form-groupd">
+            <label for="">اسم الشركه (اخياري)</label>
+            <input type="text">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">الدولة / المنطقة</label>
+            <input type="text">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">رقم الشارع</label>
+            <input type="text">
+            <input type="text" placeholder="مزيد من المعلومات العنوان">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">المدينه</label>
+            <input type="text">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">الحاله</label>
+            <input type="text">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">الرمز البريدي</label>
+            <input type="text">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">رقم الموبيل</label>
+            <input type="text">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">البريد الالكتروني</label>
+            <input type="email">
+        </div>
+
+        <div class="form-group supm">
+            <input type="submit" name="حفظ العنوان" value="حفظ العنوان">
+        </div>
+    </form>
+</div>
+

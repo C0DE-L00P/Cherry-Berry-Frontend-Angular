@@ -1,0 +1,29 @@
+<div class="cont">
+    <p class="text-div">فقدت كلمة المرور الخاصة بك؟ الرجاء إدخال اسم المستخدم أو عنوان البريد الإلكتروني. ستتلقى رابطًا لإنشاء كلمة مرور جديدة عبر البريد الإلكتروني.</p>
+
+    <form [formGroup]="regestrationLogInForm" routerLink="/RessetPassword" class="form-cont">
+
+        <div class="form-groupd email-cont">
+            <label class="email-label">البريد الالكتروني</label>
+            <input 
+            type="email" 
+            [class.is-invalid]="emailFeld?.invalid &&emailFeld?.touched"
+            formControlName="email" 
+            placeholder="اسم المستخدم/البريد الالكتروني"
+            class="form-control email-input">
+            <div class="text-erorr-contan">
+                <small class="text-danger text-erorr" *ngIf="emailFeld?.invalid &&emailFeld?.touched">This Field is Required*</small>
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="emailFeld?.errors?.['forbiddenEmail']">
+                your Email must have @ .com 
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group supm">
+            <input type="submit" name="رابط اعادة تعيين البريد الإلكتروني" value="رابط اعادة تعيين البريد الإلكتروني">
+        </div>
+        
+    </form>
+</div>

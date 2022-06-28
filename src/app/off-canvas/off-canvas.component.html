@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<button (click)="isShown=true" class="p-4 m-3 text-center justify-content-center" data-bs-toggle="offcanvas"
+    data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">canvas
+    <span class="position-absolute top-80 start-100 right-100 left-50 translate-middle badge rounded-pill bg-danger">
+        {{cart.length}}
+        <span class="visually-hidden">unread messages</span>
+    </span>
+
+</button>
+
+</html>

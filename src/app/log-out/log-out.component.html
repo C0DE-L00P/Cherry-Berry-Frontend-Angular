@@ -1,0 +1,64 @@
+<div class="cont">
+    <form [formGroup]="regestrationLogInForm" (submit)="goToAccountManagement()" class="form-cont">
+        <div class="form-groupd email-cont">
+            <label class="email-label">البريد الالكتروني</label>
+            <input 
+            type="email" 
+            pattern="^\w+@\w+.com$"
+            [class.is-invalid]="emailFeld?.invalid &&emailFeld?.touched"
+            formControlName="email" 
+            placeholder=" اسم المستخدم/البريد الالكتروني"
+            dir="ltr"
+            class="form-control email-input">
+            <div class="text-erorr-contan">
+                <small class="text-danger text-erorr" *ngIf="emailFeld?.invalid &&emailFeld?.touched">برجاء استخدام بيانات ادخال صحيحه</small>
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="emailFeld?.errors?.['forbiddenEmail']">
+                your Email must have @ .com 
+                </small>
+            </div>
+        </div>
+
+        <div class="form-group email-cont">
+            <label class="email-label">كلمة السر</label>
+            <input 
+            type="password" 
+            [class.is-invalid]="passwordFeld?.invalid &&passwordFeld?.touched"
+            formControlName="passward"
+            placeholder=" كلمة السر" 
+            dir="ltr"
+            class="form-control email-input">
+            <div class="text-erorr-contan" *ngIf="passwordFeld?.invalid &&passwordFeld?.touched">
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="passwordFeld?.errors?.['required']">
+                هذاالحقل مطلوب</small>
+
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="passwordFeld?.errors?.['minlength']">
+                من فضلك علي الاقل ادخل 8 احرف وارقام</small>
+
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="passwordFeld?.errors?.['forbiddenPassward']">
+                your passward must be 
+                </small>
+            </div>
+            
+        </div>
+
+        <div class="form-check check-div">
+            <input type="checkbox" formControlName="check" class="form-check check-input">
+            <label class="form-check-label check-label mt-2">تذكرني</label>
+            <a routerLink="/forgetPassword">نسيت كلمة السر؟</a>
+        </div>
+
+        <div class="form-group supm">
+            <input type="submit" name="تسجيل دخول" value="تسجيل دخول" [disabled]="regestrationLogInForm.invalid">
+        </div>
+
+    </form>
+</div>
+

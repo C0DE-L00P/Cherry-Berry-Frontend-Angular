@@ -1,0 +1,104 @@
+<div class="account-detal-div">
+    <form action="" [formGroup]="regestrationLogInForm">
+        <div class="first-last-name">
+            <div class="form-groupd f-l-name">
+                <label for="">الاسم الاول</label>
+                <input type="text"
+                [class.is-invalid]="firstNameFeld?.invalid &&firstNameFeld?.touched"
+                formControlName="firstName" 
+                #email
+                class="form-control">
+                <div class="text-erorr-contan" *ngIf="firstNameFeld?.invalid &&firstNameFeld?.touched">
+                    <small 
+                    class="text-danger text-erorr" 
+                    *ngIf="firstNameFeld?.errors?.['required']">
+                    هذا الحقل مطلوب*</small>
+                    
+                </div>
+            </div>
+    
+            <div class="form-groupd f-l-name">
+                <label for="">اسم العائله</label>
+                <input type="text"
+                [class.is-invalid]="lastNameFeld?.invalid &&lastNameFeld?.touched"
+                formControlName="lastName" 
+                class="form-control">
+                <div class="text-erorr-contan" *ngIf="lastNameFeld?.invalid &&lastNameFeld?.touched">
+                    <small 
+                    class="text-danger text-erorr" 
+                    *ngIf="lastNameFeld?.errors?.['required']">
+                    هذا الحقل مطلوب*</small>
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <div class="form-groupd">
+            <label for="">البريد الالكتروني</label>
+            <input type="email">
+        </div>
+
+        <div class="form-groupd">
+            <label for="">رقم الموبيل</label>
+            <input type="text"
+            [class.is-invalid]="phoneNumberFeld?.invalid &&phoneNumberFeld?.touched"
+            formControlName="phoneNumber" 
+            class="form-control">
+            <div class="text-erorr-contan" *ngIf="phoneNumberFeld?.invalid &&phoneNumberFeld?.touched">
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="phoneNumberFeld?.errors?.['required']">
+                هذا الحقل مطلوب*</small> 
+                
+            </div>
+        </div>
+
+        <div class="form-groupd">
+            <label for="">عنوان الشارع</label>
+            <input type="text" placeholder="رقم المنزل واسم الشارع"
+            [class.is-invalid]="stratAdressFeld?.invalid &&stratAdressFeld?.touched"
+            formControlName="stratAdress" 
+            class="form-control">
+            <div class="text-erorr-contan" *ngIf="stratAdressFeld?.invalid &&stratAdressFeld?.touched">
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="stratAdressFeld?.errors?.['required']">
+                هذا الحقل مطلوب*</small>
+                
+            </div>
+        </div>
+
+        <div class="form-groupd">
+            <label for="">البلد</label>
+            <input type="text"[class.is-invalid]="countryFeld?.invalid &&countryFeld?.touched"
+            formControlName="country" 
+            class="form-control">
+            <div class="text-erorr-contan" *ngIf="countryFeld?.invalid &&countryFeld?.touched">
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="countryFeld?.errors?.['required']">
+                هذا الحقل مطلوب*</small>
+                
+            </div>
+
+        </div>
+
+        <div class="form-groupd">
+            <label for="">المدينه</label>
+            <input type="text"   formControlName="city" 
+            class="form-control">
+            <div class="text-erorr-contan" *ngIf="cityFeld?.invalid &&cityFeld?.touched">
+                <small 
+                class="text-danger text-erorr" 
+                *ngIf="cityFeld?.errors?.['required']">
+                هذا الحقل مطلوب*</small>
+                
+            </div>
+        </div>
+
+        <div class="form-group supm">
+            <input type="submit" name="حفظ النغيرات" value="حفظ النغيرات">
+        </div>
+    </form>
+</div>

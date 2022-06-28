@@ -1,0 +1,25 @@
+<!-- <app-navbar></app-navbar> -->
+
+<br><br>
+<div class="text-center" >
+<img  src="../assets/Categories/4.jpg" alt="">
+</div>
+
+<br><br>
+<div class="container-fluid  ">
+    <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center " >
+
+        <div *ngFor="let pro of  finalproducts" class="card m-4 p-1 imgcart " style="width: 18rem;">
+            <img src="{{pro.Imgs[0]}}" class="card-img-top w-100  " alt="...">
+            <div class="card-body">
+              <h5 class="card-title text-center bg-light p-1 m-1">{{pro.Name}}</h5>
+              <!-- <p class="card-text text-center bg-light p-1">{{pro.DescBullets}}</p> -->
+              <p style="color:#a51731; font-weight: bold;   " class="card-text text-center m-2">EGP {{pro.Price}}</p>
+               <button (click)="addProduct(pro)" *ngIf="pro.IsPreOrder" class="btncart2 ">احجز الان</button>
+               <button (click)="addProduct(pro)" *ngIf="!pro.IsPreOrder" class="btncart">اضافه الي السلة <i class="fas fa-cart-plus"></i></button>
+              <!-- <a href="#" class="btn  w-100 btncart">Add to cart </a> -->
+            </div>
+          </div>
+    </div>
+</div>
+

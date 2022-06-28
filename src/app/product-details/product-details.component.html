@@ -1,0 +1,228 @@
+<!-- TODO make a location bar -->
+<!-- TODO Main div be bg-light or blank? -->
+
+
+
+<!-- #region Product Imgs, bullets and buying btns -->
+<div class="d-flex flex-wrap container pt-4">
+
+    <!-- Product Name and Images -->
+
+    <div class="col-12 col-lg-6 pt-2">
+        <h2>{{product.Name}}</h2>
+     
+        <!-- TODO make this as carousel -->
+        <div class="zoom-wrapper w-100 border-bottom-0" >
+            <img [src]="product.Imgs[0]" class="w-100 zoom-when-hover" #productImgElement (mouseover)="onZoom($event)"
+                (mousemove)="onZoom($event)" (mouseleave)="offZoom($event)">
+        </div>
+
+        <!-- TODO Make it horizontally scrollable and make opacity lower for imgs not being shown right now -->
+        <div class="scroll d-flex overflow-hidden">
+            <div class="col-3 p-1 thumbnails-wrapper" *ngFor="let img of product.Imgs" [class]="img==productImgElement.getAttribute('src')?'border-top-0':''">
+                <img [src]="img" class="w-100 undraggable" (click)="productImgElement.setAttribute('src',img)" style="cursor: pointer; transition-duration: .3s;"[style]="img==productImgElement.getAttribute('src')?'':'filter: brightness(66%);'">
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12 col-lg-6 px-2">
+        <br><br>
+        <!-- Rating -->
+        <div>
+            <div class="stars d-inline-block text-warning">
+                <i class="fas fa-star" *ngFor="let item of [].constructor(product.Rating);"></i>
+
+                <!-- TODO same concept as below but it doesn't work  -->
+                <!-- <i class="fas fa-star" style="color: #c8c8c8;" *ngFor="let item2 of [].constructor(5-product.Rating);"></i> -->
+            </div>
+            ( {{product.Reviews?.length}} مراجعات )
+        </div>
+
+        <!-- Price -->
+        <h4 class="fw-bold">{{product.Price}} جنيه</h4>
+
+        <!-- TODO make bullets as this would make an array that you can loop through with ngFor -->
+        <p class="mb-4 spaced">{{product.DescBullets}}</p>
+
+        <!-- Ordering Btns -->
+        <p class="text-success" *ngIf="product.IsPreOrder">متاح للحجز (طلب مسبق)</p>
+        <div>
+            <button class="btn  rounded-0 btn-outline-primary col-1" (click)="changeQuantityOrdered(in_quantity.value,false)">-</button>
+            <div class="d-inline-block col-2 ">
+                <!-- TODO increment  -->
+                <input type="number" value="1" #in_quantity class="w-100 rounded-0 text-center form-control no-increasing-arrows"
+                    style="width:60px;">
+            </div> 
+            <button class="btn rounded-0 btn-outline-primary col-1" >+</button>
+
+            <button class="btn rounded-0 col-8 " [class]="!product.IsPreOrder?'btn-primary':'hover-to-primary-color  btn-dark'">{{!product.IsPreOrder?"اشتري الان":"احجز الان"}}</button>
+        </div>
+
+        <div class="d-inline-block ps-1" [class]="!product.IsPreOrder?'col-6':'d-none'">
+        <button class="btn rounded-0 btn-dark mt-2 w-100" >إضافة إلى السلة</button>
+    </div>
+
+    <div class="d-inline-block " [class]="!product.IsPreOrder?'col-6 pe-1':'col-12'">
+        <button class="btn rounded-0 btn-outline-dark mt-2 w-100" >
+            إضافة إلى المفضلة
+        </button>
+    </div>
+    
+</div>
+<!-- #endregion -->
+
+<div class="text-center w-100 mb-4">
+<h2 style="color: #a51731; font-weight: 700;" class="mt-4">وصف المنتج</h2>
+<img src="../../assets/icons/4.png" alt="icon.png">
+</div>
+
+<div class="fs-5 spaced">
+    {{product.Desc}}
+</div>
+
+<!-- #region How To Use  -->
+
+<div class="text-center w-100 mb-4">
+    <h2 style="color: #a51731; font-weight: 700;" class="mt-4">كيفية الاستخدام</h2>
+    <img src="../../assets/icons/4.png" alt="icon.png">
+</div>
+
+<div class="d-flex justify-content-center">
+    <div class="w-50 position-relative" style="min-width: 400px;">
+        <img src="../../assets/banner.jpg" class="w-100">
+        <i class="fas fa-play p-3 rounded-circle text-light position-absolute bottom-0 m-4 end-0 bottom-0" style="background-color: #a51731;"></i>
+    </div>
+</div>
+
+
+<!-- Carousel -->
+<!-- TODO show the embedded video of the youtube -->
+
+<div id="carouselExampleCaptions" class="carousel slide d-none" data-bs-ride="carousel" >
+    <div class="carousel-indicators" *ngIf="product.HowToUse[1]?.length != 0">
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide "+i *ngFor="let img of product.HowToUse[1];index as i;"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="product.HowToUse[0]?.length" aria-current="false" [attr.aria-label]="'Slide '+product.HowToUse[0]?.length" *ngFor="let img of product.HowToUse[0];index as i;"></button>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active" *ngFor="let img of product.HowToUse[1]">
+        <img [src]="img" class="d-block w-100" [alt]="img">
+        <div class="carousel-caption d-none d-md-block">
+            <i class="fas fa-play p-3 rounded-circle text-light m-4" style="background-color: #a51731;"></i>
+        </div>
+      </div>
+      <div class="carousel-item active" *ngFor="let vid of product.HowToUse[0]">
+        <!-- <img src="../../assets/banner.jpg" class="d-block w-100" alt="img"> -->
+            <iframe width="560" height="315" [src]="vid | safe" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen>
+            </iframe>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev" *ngIf="product.HowToUse[1]?.length != 0">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next" *ngIf="product.HowToUse[1]?.length != 0">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+
+<!-- #endregion -->
+
+<!-- #region FAQs -->
+
+<div class="text-center w-100 mb-4" *ngIf="product.FAQs?.length != 0">
+    <h2 style="color: #a51731; font-weight: 700;" class="mt-4">الأسئلة الشائعة</h2>
+    <img src="../../assets/icons/4.png" alt="icon.png">
+</div>
+
+<!-- TODO اللي تفتح تقفل اللي قبلها زي الاولى والتانيه -->
+<!-- TODO colors when question clicked-->
+<div *ngFor="let QAndA of product.FAQs; index as i" class="accordion accordion-flush d-block col-12 m-auto col-lg-8 mb-1" id="accordionFlushExample">
+    <div class="accordion-item " >
+        <h2 class="accordion-header w-100" id="flush-headingOne">
+        <button class="custom-accordion-btn collapsed w-100" type="button" data-bs-toggle="collapse" [attr.data-bs-target]="'#flush-collapse'+i" aria-expanded="false" [attr.aria-controls]="'flush-collapse'+i" >
+            <!-- <i class="fas fa-sort-down py-1 px-2 rounded-circle bg-light mx-2" style="color: #a51731;"></i> -->
+            <span class="fs-5 fw-semibold p-4">{{QAndA.Q}}</span>
+        </button>
+        </h2>
+        <div [id]="'flush-collapse'+i"class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
+        <div class="accordion-body">{{QAndA.A}}</div>
+        </div>
+    </div>
+</div>
+
+<!-- #endregion -->
+
+<!-- #region Reviews -->
+
+<div class="w-100 position-relative mt-4 pt-4 my-4">
+    <hr class="d-inline-block hr-width" style="border-color: #7a7a7a;">
+    
+    <h3 class="text-center d-inline-block p-2" style="border: 1px solid #7a7a7a;">تقييمات العملاء</h3>
+    <hr class="d-inline-block hr-width">
+</div>
+
+
+<div class="w-100">
+    <div *ngIf="product.Reviews?.length == 0 then thenBlock;else elseBlock"></div>
+
+    <ng-template #thenBlock>
+        <h2 >لا توجد مراجعات لـ{{product.Name}}</h2>
+    </ng-template>
+
+    <ng-template #elseBlock>
+        <div *ngFor="let review of ReviewsList" class="my-4">
+            <img src="../../assets//icons/anon.png" class="rounded-circle me-2 ms-4" style="vertical-align:baseline">
+            <div class="d-inline-block">
+            <div>{{review.Author}} - {{review.PublishDate}}</div>
+            <div class="stars d-inline-block text-warning">
+                <i class="fas fa-star" *ngFor="let item of [].constructor(review.Rating);"></i>
+            </div>
+            <div class="fs-4" style="color: #808080;">{{review.Content}}</div>
+        </div>
+        </div>
+    </ng-template>
+
+<!-- Add review -->
+
+    <div class="d-block w-100 p-4 my-4" style="border:1px solid #efefef;">
+        <h4 style="color: grey;">
+        إضافة مراجعة
+    </h4>
+    <div *ngIf="userAuth" class="mb-4">لن يتم نشر عنوان بريدك الإلكتروني. الحقول الإلزامية مشار إليها بـ *</div>
+    <p class="m-0 p-0">
+        تقييمك *
+    </p>
+    <!-- TODO make the hove effect for the stars -->
+        <div class="stars d-inline-block text-warning">
+            <i class="fas fa-star star-empty" *ngFor="let item of [].constructor(5); index as i"></i>
+        </div>
+        <p class="mt-4">
+        مراجعتك *
+    </p>
+        <textarea name="in_review" id="in_review" rows="6" class="w-75 form-control" style="resize: none;"></textarea>
+        <div *ngIf="userAuth">
+            <div class="my-1 mt-3"><label for="in_name" style="width:140px">الاسم*</label><input name="in_name" id="in_name" class="form-control-sm form-control-lg"></div>
+            <div class="my-1"><label for="in_email" style="width:140px">البريد الإلكتروني*</label><input name="in_email" id="in_email" class="form-control-sm form-control-lg"></div>
+            <div class="form-check mt-2" style="text-align: start;">
+                <input  type="checkbox" class="mx-2" id="flexCheckChecked">
+                <label class="form-check-label user-select-none" for="flexCheckChecked">
+                    احفظ اسمي، بريدي الإلكتروني، والموقع الإلكتروني في هذا المتصفح لاستخدامها المرة المقبلة في تعليقي.
+                </label>
+            </div>
+        </div>
+    <button class="btn btn-primary px-4 mt-4">إرسال</button>
+
+    </div>
+
+</div>
+<!-- #endregion -->
+
+<!-- #region Suggested -->
+<div class="text-center w-100 mb-4" *ngIf="product.FAQs?.length != 0">
+    <h2 style="color: #a51731; font-weight: 700;" class="mt-4">قد يعجبك أيضاً</h2>
+    <img src="../../assets/icons/4.png" alt="icon.png">
+</div>
+
+<!-- #endregion -->
+</div>

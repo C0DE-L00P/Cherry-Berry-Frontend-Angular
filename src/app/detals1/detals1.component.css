@@ -1,0 +1,21 @@
+*{
+    font-family: "Almarai", sans-serif;
+ }
+ *::selection {
+    background: #a51731;
+    color: white;
+}
+
+
+.bigbox{
+    background-color: white;
+    border-radius: 3px;
+    padding: 30px 30px 1px 30px;
+    margin-bottom: 45px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    margin-top: 45px;
+}
+
+p{
+    font-size: 14px;
+}

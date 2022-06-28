@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+
+<!-- <app-navbar></app-navbar> -->
+<body style="direction: ltr;">
+    <div class="container">
+        <h2 class="p-3 " style="direction:rtl"> اتمام الطلب</h2>
+        <div class="row">
+            <div class="col-lg-5 myOrder">
+                <h1 style="font-weight: bold;color: brown;">طلبك</h1>
+                <div>
+                    <table class="table">
+                        <thead>
+                            <tr class="tROW">
+                                <th class="col-6">المجموع</th>
+                                <th class="col-6">المنتج</th>
+                            </tr>
+                        </thead>
+                        <tbody *ngFor="let pro of cart">
+                            <tr>
+                                <td class="col-6">{{pro.item.Price*pro.quantity}} جنيه</td>
+                                <td  style="direction: rtl;" class="col-6"> {{pro.item.Name}}  {{pro. quantity}}<span class="p-1">x</span>     </td>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="col-6">{{total}}جنيه</td>
+                                <th class="col-6">المجموع</th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td style="font-weight: bold; color: brown;" class="col-6">الشحن مجانى</td>
+                                <th class="col-6">الشحن</th>
+                            </tr>
+                        </tbody>
+                        <tbody>
+                            <tr>
+                                <td class="col-6">{{total}} جنيه</td>
+                                <th class="col-6">الإجمالى</th>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="checkOutDiv">
+                    <div class="form-check">
+                        <input class="form-check-input" [value]="1" [(ngModel)]="isVisible" type="radio" name="sh"
+                            id="flexRadioDefault1" checked>
+                        <label class="form-check-label" for="flexRadioDefault1">
+                            الدفع نقدا عند الاستلام
+                        </label>
+                    </div>
+                    <div class="check1" *ngIf="isVisible == 1">الدفع عند الاستلام.</div>
+                    <div class="form-check">
+                        <input class="form-check-input" [value]="0" [(ngModel)]="isVisible" type="radio" name="sh"
+                            id="flexRadioDefault2">
+                        <label class="form-check-label" for="flexRadioDefault2">
+                            بطاقة الائتمان / الخصم
+                        </label>
+                    </div>
+                    <div class="check2" *ngIf="isVisible == 0">
+                        <form [formGroup]="registerationForm">
+                            <div>
+                                <label for="id">رقم البطاقة <span style="color: red;">*</span></label><br>
+                                <input type="text" id="id" style="width: 100%;"
+                                    [class.is-invalid]="creditID?.invalid &&creditID?.touched"
+                                    formControlName="creditID">
+                                <div *ngIf="creditID?.invalid &&creditID?.touched">
+                                    <small class="text-danger" *ngIf="creditID?.errors?.['required']">يجب اخال رقم بطاقة
+                                        الائتمان</small>
+                                </div>
+                            </div>
+                            <div>
+                                <label for="name">إسم صاحب البطاقة</label><br>
+                                <input type="text" id="name" style="width: 100%;">
+                            </div>
+                            <div style="margin: 30px 0;">
+                                <label>تاريخ انتهاء الصلاحية <span style="color: red;">*</span></label><br>
+                                <div style="display:flex;" class="forInputs">
+                                    <div style="width: 10%;">
+                                        <input type="text" placeholder="MM" style="width: 100%;" maxlength="2"
+                                            [class.is-invalid]="month?.invalid &&month?.touched"
+                                            formControlName="month">
+                                        <br>
+                                        <div *ngIf="month?.invalid &&month?.touched">
+                                            <small class="text-danger" *ngIf="month?.errors?.['required']">ضرورى</small>
+                                        </div>
+                                    </div>
+                                    <div style="width: 10%; margin-right: 15px;">
+                                        <input type="text" placeholder="YY" style="width: 100%;" maxlength="2"
+                                            [class.is-invalid]="year?.invalid &&year?.touched" formControlName="year">
+                                        <div *ngIf="year?.invalid &&year?.touched">
+                                            <small class="text-danger" *ngIf="year?.errors?.['required']">ضرورى</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <label>CVV <span style="color: red;">*</span></label><br>
+                                <input type="text" placeholder="" style="width: 11%;" maxlength="4"
+                                    [class.is-invalid]="cvv?.invalid &&cvv?.touched" formControlName="cvv">
+                                <div *ngIf="cvv?.invalid &&cvv?.touched">
+                                    <small class="text-danger" *ngIf="cvv?.errors?.['required']">يجب اخال رمز الامان
+                                        الخاص بالبطاقة</small>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <button class="donOrderBTN" (click)="Click()">تأكيد الطلب</button>
+            </div>
+            <div class="col-lg-7 formDiv">
+                <h1 style="font-weight: bold;color: brown;">تفاصيل الفاتورة</h1>
+                <hr>
+                <form [formGroup]="registerationForm">
+                    <div class="row" style="display: flex;">
+                        <div class="col">
+                            <label for="">الاسم الاول<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control form-control-sm"
+                                [class.is-invalid]="fName?.invalid &&fName?.touched" formControlName="fName">
+                            <div *ngIf="fName?.invalid &&fName?.touched">
+                                <small class="text-danger" *ngIf="fName?.errors?.['required']">يجب اضافةالاسم
+                                    الاول</small>
+                            </div>
+                        </div>
+                        <div class="col">
+                            <label for="">الاسم الاخير<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control form-control-sm"
+                                [class.is-invalid]="lName?.invalid &&lName?.touched" formControlName="lName">
+                            <div *ngIf="lName?.invalid &&lName?.touched">
+                                <small class="text-danger" *ngIf="lName?.errors?.['required']">يجب اضافة الاسم
+                                    الاخير</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">البريد الالكترونى<span style="color: red;">*</span></label>
+                            <input type="email" class="form-control form-control-sm"
+                                [class.is-invalid]="email?.invalid &&email?.touched" formControlName="email">
+                            <div *ngIf="(email?.invalid &&email?.touched)||email?.dirty">
+                                <small class="text-danger" *ngIf="email?.errors?.['required']">يجب اضافة بريدك
+                                    الالكترونى</small>
+                                <small class="text-danger" *ngIf="email?.errors?.['pattern']"> يجب ادخال ارقام فقط</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">رقم الهاتف<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control form-control-sm" maxlength="11"
+                                [class.is-invalid]="number?.invalid &&number?.touched" formControlName="number">
+                            <div *ngIf="(number?.invalid &&number?.touched)||number?.dirty">
+                                <small class="text-danger" *ngIf="number?.errors?.['required']">يجب اضافة رقم
+                                    الهاتف</small>
+                                <small class="text-danger" *ngIf="number?.errors?.['pattern']"> هذا الرقم غير صحيح </small>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">العنوان<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control form-control-sm"
+                                [class.is-invalid]="address?.invalid && address?.touched" formControlName="address"
+                                placeholder="رقم المنزل ورقم الشارع">
+                            <div *ngIf="address?.invalid &&address?.touched">
+                                <small class="text-danger" *ngIf="address?.errors?.['required']">يجب اضافة رقم المنزل
+                                    ورقم الشارع</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">الدولة<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control form-control-sm"
+                                [class.is-invalid]="country?.invalid &&country?.touched" formControlName="country">
+                            <div *ngIf="country?.invalid &&country?.touched">
+                                <small class="text-danger" *ngIf="country?.errors?.['required']">يجب اختيار الدولة</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">المدينة<span style="color: red;">*</span></label>
+                            <select class="form-control form-control-sm"
+                                [class.is-invalid]="city?.invalid &&city?.touched" formControlName="city">
+                                <option selected="true" [disabled]="city?.touched">اختر المدينة</option>
+                                <option *ngFor="let city of cities">{{city}}</option>
+                            </select>
+                            <div *ngIf="city?.invalid &&city?.touched">
+                                <small class="text-danger" *ngIf="city?.errors?.['required']">يجب اختيار المدينة</small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <label for="">الحي السكني<span style="color: red;">*</span></label>
+                            <input type="text" class="form-control form-control-sm"
+                                [class.is-invalid]="region?.invalid &&region?.touched" formControlName="region">
+                            <div *ngIf="region?.invalid &&region?.touched">
+                                <small class="text-danger" *ngIf="region?.errors?.['required']">يجب اختيار المنطقة
+                                    السكنية</small>
+                            </div>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
