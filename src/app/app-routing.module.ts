@@ -25,6 +25,7 @@ import { OrdersComponent } from './my-account/orders/orders.component';
 import { PaymentInsiteComponent } from './my-account/payment-methods/payment-insite/payment-insite.component';
 import { PaymentMethodsComponent } from './my-account/payment-methods/payment-methods.component';
 import { OffCanvasComponent } from './off-canvas/off-canvas.component';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 import { ProductfilterComponent } from './productfilter/productfilter.component';
 import { Productfilter1Component } from './productfilter1/productfilter1.component';
 import { Productfilter2Component } from './productfilter2/productfilter2.component';
@@ -48,6 +49,7 @@ const routes: Routes = [
   {path:'check-out',component:CheckOutComponent},
   // {path:'canvas',component:CanvasComponent},
   {path:'offcanvas',component:OffCanvasComponent},
+  {path:'product/:id',component:ProductDetailsComponent},
   {path:'',component:HomeComponent},
 
   // for the account management
@@ -79,7 +81,7 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled' })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

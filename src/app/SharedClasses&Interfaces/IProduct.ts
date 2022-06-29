@@ -2,7 +2,7 @@ import { IPFAQ } from "./IPFAQ";
 import { IPFeature } from "./IPFeature";
 
 export interface IProduct{
-    PID: number;
+    _id: string;
     Name: string;
     Brand: string;
     Imgs: string[];
@@ -10,7 +10,7 @@ export interface IProduct{
     Price: number;
     Sold: number;
     Rating: number;
-    Reviews: number[];
+    Reviews: any[];
     IsPreOrder: boolean;
     DescBullets:string;
     Desc: string;

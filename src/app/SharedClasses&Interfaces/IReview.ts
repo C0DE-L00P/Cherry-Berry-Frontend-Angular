@@ -1,5 +1,5 @@
 export interface IReview {
-  RID: number;
+  _id: number;
   Author: string;
   AuthorImg: string;
   Email: string;

@@ -47,15 +47,14 @@
         <!-- Ordering Btns -->
         <p class="text-success" *ngIf="product.IsPreOrder">متاح للحجز (طلب مسبق)</p>
         <div>
-            <button class="btn  rounded-0 btn-outline-primary col-1" (click)="changeQuantityOrdered(in_quantity.value,false)">-</button>
+            <button class="btn  rounded-0 btn-outline-primary col-1" (click)="changeQuantityOrdered(false)">-</button>
             <div class="d-inline-block col-2 ">
-                <!-- TODO increment  -->
-                <input type="number" value="1" #in_quantity class="w-100 rounded-0 text-center form-control no-increasing-arrows"
+                <input type="number" [value]="amount" #in_quantity class="w-100 rounded-0 text-center form-control no-increasing-arrows"
                     style="width:60px;">
             </div> 
-            <button class="btn rounded-0 btn-outline-primary col-1" >+</button>
+            <button class="btn rounded-0 btn-outline-primary col-1" (click)="changeQuantityOrdered(true)">+</button>
 
-            <button class="btn rounded-0 col-8 " [class]="!product.IsPreOrder?'btn-primary':'hover-to-primary-color  btn-dark'">{{!product.IsPreOrder?"اشتري الان":"احجز الان"}}</button>
+            <button class="btn rounded-0 col-8 " (click)="addToCart(product,amount)" [class]="!product.IsPreOrder?'btn-primary':'hover-to-primary-color  btn-dark'">{{!product.IsPreOrder?"اشتري الان":"احجز الان"}}</button>
         </div>
 
         <div class="d-inline-block ps-1" [class]="!product.IsPreOrder?'col-6':'d-none'">
@@ -100,7 +99,7 @@
 
 <div id="carouselExampleCaptions" class="carousel slide d-none" data-bs-ride="carousel" >
     <div class="carousel-indicators" *ngIf="product.HowToUse[1]?.length != 0">
-      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide "+i *ngFor="let img of product.HowToUse[1];index as i;"></button>
+      <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide "*ngFor="let img of product.HowToUse[1];index as i;"></button>
       <button type="button" data-bs-target="#carouselExampleCaptions" [attr.data-bs-slide-to]="product.HowToUse[0]?.length" aria-current="false" [attr.aria-label]="'Slide '+product.HowToUse[0]?.length" *ngFor="let img of product.HowToUse[0];index as i;"></button>
     </div>
     <div class="carousel-inner">
@@ -200,18 +199,18 @@
         <p class="mt-4">
         مراجعتك *
     </p>
-        <textarea name="in_review" id="in_review" rows="6" class="w-75 form-control" style="resize: none;"></textarea>
-        <div *ngIf="userAuth">
-            <div class="my-1 mt-3"><label for="in_name" style="width:140px">الاسم*</label><input name="in_name" id="in_name" class="form-control-sm form-control-lg"></div>
-            <div class="my-1"><label for="in_email" style="width:140px">البريد الإلكتروني*</label><input name="in_email" id="in_email" class="form-control-sm form-control-lg"></div>
+        <textarea name="in_review" id="in_review" #in_body rows="6" class="w-75 form-control" style="resize: none;"></textarea>
+        <div [class.d-none]="userAuth">
+            <div class="my-1 mt-3"><label for="in_name" #in_author style="width:140px">الاسم*</label><input name="in_name" id="in_name" class="form-control-sm form-control-lg"></div>
+            <div class="my-1"><label for="in_email" #in_email style="width:140px">البريد الإلكتروني*</label><input name="in_email" id="in_email" class="form-control-sm form-control-lg"></div>
             <div class="form-check mt-2" style="text-align: start;">
-                <input  type="checkbox" class="mx-2" id="flexCheckChecked">
+                <input  type="checkbox" class="mx-2" id="flexCheckChecked" #rememberMe>
                 <label class="form-check-label user-select-none" for="flexCheckChecked">
                     احفظ اسمي، بريدي الإلكتروني، والموقع الإلكتروني في هذا المتصفح لاستخدامها المرة المقبلة في تعليقي.
                 </label>
             </div>
         </div>
-    <button class="btn btn-primary px-4 mt-4">إرسال</button>
+    <button class="btn btn-primary px-4 mt-4" (click)="sendReview(in_body,in_author,in_email,rememberMe)">إرسال</button>
 
     </div>
 
@@ -222,6 +221,24 @@
 <div class="text-center w-100 mb-4" *ngIf="product.FAQs?.length != 0">
     <h2 style="color: #a51731; font-weight: 700;" class="mt-4">قد يعجبك أيضاً</h2>
     <img src="../../assets/icons/4.png" alt="icon.png">
+    
+<div class="container-fluid ">
+    <div class="row  rowscr">
+  
+        <div *ngFor="let pro of ProductsList" class="card  p-3 m-2 imgcart cardscr col-lg-2 col-6 " >
+            <img src="{{pro.Imgs[0]}}" class="card-img-top w-100 h-50 text-center" (click)="goToDetails(pro._id)">
+            <div class="card-body">
+              <h5 class="card-title text-center bg-light p-1 m-1">{{pro.Name}}</h5>
+             <!-- <div class="text-center">
+                <i class="fas fa-sack-dollar dollar"></i>
+             </div> -->
+              <p style="color:#a51731; font-weight: bold;   " class="card-text text-center m-2 " ><i class="fab fa-searchengin dollar"></i> EGP {{pro.Price}}</p>
+              <button (click)="addToCart(pro,1)"  class="btncart" [class.bg-dark]="CartInLocal?.indexOf(pro) != -1" >{{CartInLocal?.indexOf(pro) != -1? 'تم الإضافة': 'اضافه الي السلة' }} <i class="fas fa-cart-plus"></i></button>
+             
+            </div>ِ
+          </div>
+    </div>
+  </div>
 </div>
 
 <!-- #endregion -->

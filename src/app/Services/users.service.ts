@@ -10,6 +10,8 @@ export class UsersService {
 
   constructor(private http:HttpClient) { }
 
+  public isAuth:boolean = false;
+
   _url:string = 'https://cherrynberry.herokuapp.com/api/users'
 
   GetAllUsers():Observable<IUser[]>{
@@ -17,5 +19,24 @@ export class UsersService {
       return throwError(()=>err.message || 'Server Error')
     }))
   }
-  
+
+  GetUserByID(id:String):Observable<IUser[]>{
+    return this.http.get<IUser[]>(this._url+'/'+id).pipe(catchError((err)=>{
+      return throwError(()=>err.message || 'Server Error')
+    }))
+  }
+
+
+  // ------------------ POST
+
+  PutUser(id:any,body:any):Observable<IUser[]>{
+    return this.http.put<any>(this._url+'/'+id,body)
+  }  
+
+
+  // ------------------ POST
+
+  PostUser(body:any):Observable<IUser[]>{
+    return this.http.post<any>(this._url,body)
+  }
 }
