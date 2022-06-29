@@ -1,6 +1,6 @@
 [
   {
-    "PID": 1,
+    "_id": 1,
     "Name": "فرشاة التدليك",
     "Brand": "Cherry & Berry",
     "Imgs": ["../../assets/products/1/1.png", "../../assets/products/1/2.png"],
@@ -20,7 +20,7 @@
     "Extra": []
   },
   {
-    "PID": 2,
+    "_id": 2,
     "Name": "فرشاة تسليك الشعر",
     "Brand": "Cherry & Berry",
     "Category":"العناية بالشعر",
@@ -56,7 +56,7 @@
     "Extra": []
   },
   {
-    "PID": 3,
+    "_id": 3,
     "Name": "فرشاة تكثيف الشعر",
     "Brand": "Cherry & Berry",
     "Category":"تجفيف الشعر",
@@ -125,7 +125,7 @@
     "Extra": []
   },
   {
-    "PID": 4,
+    "_id": 4,
     "Name": "فرشاة فرد الشعر الأيونية",
     "Brand": "Cherry & Berry",
     "Category":"فرد الشعر",
@@ -172,7 +172,7 @@
     ]
   },
   {
-    "PID": 5,
+    "_id": 5,
     "Name": "مجفف الشعر الذكي",
     "Brand": "Cherry & Berry",
     "Category":"تجفيف الشعر",
@@ -222,7 +222,7 @@
     "Extra": []
   },
   {
-    "PID": 6,
+    "_id": 6,
     "Name": "مجموعة الكيرلي ٥ في ١",
     "Brand": "Cherry & Berry",
     "Category":"تمويج الشعر",
@@ -310,7 +310,7 @@
     "Extra": []
   },
   {
-    "PID": 7,
+    "_id": 7,
     "Name": "مكواة البخار الاحترافية",
     "Brand": "Cherry & Berry",
     "Category":"فرد الشعر",
@@ -336,7 +336,7 @@
     "Extra": []
   },
   {
-    "PID": 8,
+    "_id": 8,
     "Name": "مكواة الكيرلى الاوتوماتيك",
     "Brand": "Cherry & Berry",
     "Category":"تمويج الشعر",
@@ -389,7 +389,7 @@
     "Extra": []
   },
   {
-    "PID": 9,
+    "_id": 9,
     "Name": "مكواة فرد الشعر بالبخار",
     "Brand": "Cherry & Berry",
     "Category":"فرد الشعر",    

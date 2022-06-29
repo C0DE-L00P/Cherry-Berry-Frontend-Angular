@@ -1,15 +1,13 @@
-<!-- <app-navbar></app-navbar> -->
-
 <br><br>
 <div class="text-center " >
-<img   src="../assets/Categories/1.jpg" alt="">
+<img [src]="category?.Img" alt="">
 </div>
 <br><br>
 <div class="container-fluid  ">
     <div class="row row-cols-1 row-cols-md-3 g-4 justify-content-center " >
 
-        <div *ngFor="let pro of  finalproducts" class="card m-4 p-1 imgcart " style="width: 18rem;">
-            <img src="{{pro.Imgs[0]}}" class="card-img-top w-100  " alt="...">
+        <div *ngFor="let pro of products" class="card m-4 p-1 imgcart " style="width: 18rem;">
+            <img src="{{pro.Imgs[0]}}" class="card-img-top w-100  " alt="..." (click)="goToDetails(pro._id)"s>
             <div class="card-body">
               <h5 class="card-title text-center bg-light p-1 m-1">{{pro.Name}}</h5>
               <!-- <p class="card-text text-center bg-light p-1">{{pro.DescBullets}}</p> -->
@@ -21,3 +19,8 @@
           </div>
     </div>
 </div>
+
+<br>
+<br>
+<br>
+<br>

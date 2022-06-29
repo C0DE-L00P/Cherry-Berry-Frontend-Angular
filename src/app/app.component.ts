@@ -1,5 +1,6 @@
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
+import { ProductsService } from './Services/products.service';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +12,7 @@ export class AppComponent implements AfterViewInit {
   isLoggedIn = false;
   isActive = true;
 
-  constructor(public router: Router) {}
+  constructor(public router: Router,private productsService: ProductsService) {}
 
   ngAfterViewInit(): void {
     this.isLoggedIn = localStorage.getItem('User') != null;
@@ -20,6 +21,7 @@ export class AppComponent implements AfterViewInit {
   logout() {
     //TODO localStorage back to check it later
     localStorage.removeItem('User');
+    this.router.navigate(['home'])
   }
 
   moveToLoginIfNeeded() {
@@ -75,7 +77,7 @@ export class AppComponent implements AfterViewInit {
   }
 
   SearchInProducts(searchVal: string) {
-    console.log('searched');
-    //TODO search for this item in database
+    console.log('44fds')
+    this.router.navigate(['search',searchVal])
   }
 }

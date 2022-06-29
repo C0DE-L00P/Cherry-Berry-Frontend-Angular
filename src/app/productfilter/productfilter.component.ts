@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { tick } from '@angular/core/testing';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductsService } from '../Services/products.service';
 
 @Component({
@@ -9,48 +10,29 @@ import { ProductsService } from '../Services/products.service';
 })
 export class ProductfilterComponent implements OnInit {
 
-  constructor(private productsService:ProductsService) { }
 
   products:any[]=[]
   finalproducts:any[]=[]
   cart:any[] = [];
   user: string | undefined;
   amount:number=1;
+  category: any;
+
+  constructor(private router:Router,private activatedRoute: ActivatedRoute,private productsService: ProductsService) { }
 
   ngOnInit(): void {
 
-    this.productsService.GetAllProducts().subscribe(data=>{
-      this.products=data
-      this.finalproducts=this.products.filter(p => {
-        return p.Category =='فرد الشعر'
-      })  
-      console.log(this.finalproducts);
+  this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
+      this.productsService.GetCategoryByID(params.get('id')!).subscribe((category)=>{
+        this.products = category.Products
+        this.category = category;
+        console.log(this.products)
+      })
     })
-
- 
-  // this.productsservice.getProductFilter2().subscribe(data=>{
-  //   this.products=data
-  //   this.finalproducts=this.products.filter(p => {
-  //     return p.Category == "تمويج الشعر"
-  //   })  
-  //   console.log(this.finalproducts);
-  // })
-
- 
-  // this.productsservice.getProductFilter3().subscribe(data=>{
-  //   this.products=data
-  //   this.finalproducts=this.products.filter(p => {
-  //     return p.Category =="تجفيف الشعر"
-  //   })  
-  // })
-
-  // this.productsservice.getProductFilter4().subscribe(data=>{
-  //   this.products=data
-  //   this.finalproducts=this.products.filter(p => {
-  //     return p.Category =="العناية بالشعر"
-  //   })  
-  // })
-
+  }
+  
+  goToDetails(id:string) {
+    this.router.navigate(['product',id])
   }
 
   addProduct(product: any) {
@@ -64,7 +46,7 @@ export class ProductfilterComponent implements OnInit {
      } else {
        if ('cart' in localStorage) {
          this.cart = JSON.parse(localStorage.getItem('cart')!);
-         var exist= this.cart.find(itemm=>itemm.PID==obj.item.PID)
+         var exist= this.cart.find(itemm=>itemm._id==obj.item._id)
          if (exist) {
            alert('This product is already added');
          } else {

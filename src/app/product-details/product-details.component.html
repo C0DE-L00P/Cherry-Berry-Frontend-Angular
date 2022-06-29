@@ -189,20 +189,20 @@
         إضافة مراجعة
     </h4>
     <div *ngIf="userAuth" class="mb-4">لن يتم نشر عنوان بريدك الإلكتروني. الحقول الإلزامية مشار إليها بـ *</div>
-    <p class="m-0 p-0">
+    <!-- <p class="m-0 p-0">
         تقييمك *
-    </p>
+    </p> -->
     <!-- TODO make the hove effect for the stars -->
-        <div class="stars d-inline-block text-warning">
+        <!-- <div class="stars d-inline-block text-warning">
             <i class="fas fa-star star-empty" *ngFor="let item of [].constructor(5); index as i"></i>
-        </div>
+        </div> -->
         <p class="mt-4">
         مراجعتك *
     </p>
         <textarea name="in_review" id="in_review" #in_body rows="6" class="w-75 form-control" style="resize: none;"></textarea>
         <div [class.d-none]="userAuth">
-            <div class="my-1 mt-3"><label for="in_name" #in_author style="width:140px">الاسم*</label><input name="in_name" id="in_name" class="form-control-sm form-control-lg"></div>
-            <div class="my-1"><label for="in_email" #in_email style="width:140px">البريد الإلكتروني*</label><input name="in_email" id="in_email" class="form-control-sm form-control-lg"></div>
+            <div class="my-1 mt-3"><label for="in_name"  style="width:140px">الاسم*</label><input  #in_author name="in_name" id="in_name" class="form-control-sm form-control-lg"></div>
+            <div class="my-1"><label for="in_email"  style="width:140px">البريد الإلكتروني*</label><input  #in_email name="in_email" id="in_email" class="form-control-sm form-control-lg"></div>
             <div class="form-check mt-2" style="text-align: start;">
                 <input  type="checkbox" class="mx-2" id="flexCheckChecked" #rememberMe>
                 <label class="form-check-label user-select-none" for="flexCheckChecked">
@@ -210,7 +210,7 @@
                 </label>
             </div>
         </div>
-    <button class="btn btn-primary px-4 mt-4" (click)="sendReview(in_body,in_author,in_email,rememberMe)">إرسال</button>
+    <button class="btn btn-primary px-4 mt-4" (click)="sendReview(in_body.value,in_author.value,in_email.value,rememberMe)">إرسال</button>
 
     </div>
 

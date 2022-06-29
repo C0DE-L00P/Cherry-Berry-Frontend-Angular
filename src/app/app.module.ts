@@ -45,6 +45,8 @@ import { OrdersComponent } from './my-account/orders/orders.component';
 import { PaymentInsiteComponent } from './my-account/payment-methods/payment-insite/payment-insite.component';
 import { PaymentMethodsComponent } from './my-account/payment-methods/payment-methods.component';
 import { CommonModule } from '@angular/common';
+import { SearchComponent } from './search/search.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +66,8 @@ import { CommonModule } from '@angular/common';
     CartComponent,
     CheckOutComponent,
     HomeComponent,
+    ProductfilterComponent,
+    Productfilter1Component,
     
     AppComponent,
     LogInComponent,
@@ -81,7 +85,9 @@ import { CommonModule } from '@angular/common';
     BillingAddressComponent,
     ShippingAddressComponent,
     PaymentInsiteComponent,
-    RessetPasswordComponent
+    RessetPasswordComponent,
+    SearchComponent,
+    ConfirmComponent
   ],
   imports: [
     BrowserModule,

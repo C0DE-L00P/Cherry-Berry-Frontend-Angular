@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AllproductsComponent } from './allproducts/allproducts.component';
 import { CartComponent } from './cart/cart.component';
 import { CheckOutComponent } from './check-out/check-out.component';
+import { ConfirmComponent } from './confirm/confirm.component';
 import { Details2Component } from './details2/details2.component';
 import { Details3Component } from './details3/details3.component';
 import { Detals1Component } from './detals1/detals1.component';
@@ -31,6 +32,7 @@ import { Productfilter1Component } from './productfilter1/productfilter1.compone
 import { Productfilter2Component } from './productfilter2/productfilter2.component';
 import { Productfilter3Component } from './productfilter3/productfilter3.component';
 import { SaleComponent } from './sale/sale.component';
+import { SearchComponent } from './search/search.component';
 
 const routes: Routes = [
   
@@ -50,6 +52,9 @@ const routes: Routes = [
   // {path:'canvas',component:CanvasComponent},
   {path:'offcanvas',component:OffCanvasComponent},
   {path:'product/:id',component:ProductDetailsComponent},
+  {path:'search/:searchVal',component:SearchComponent},
+  {path:'category/:id',component:ProductfilterComponent},
+  {path:'check-out/confirm-order',component:ConfirmComponent},
   {path:'',component:HomeComponent},
 
   // for the account management

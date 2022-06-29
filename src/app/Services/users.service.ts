@@ -26,6 +26,19 @@ export class UsersService {
     }))
   }
 
+  // -------------------- Query By Email and Password
+  
+
+  MakeALogin(body:any):Observable<IUser[]>{
+    return this.http.post<any>( this._url+'/login' ,body )
+  }
+  
+  // _register_url:string = this._url + '/register'
+
+  MakeARegister(body:any):Observable<IUser[]>{
+    return this.http.post<any>( this._url+'/register' ,body )
+  }
+
 
   // ------------------ POST
 

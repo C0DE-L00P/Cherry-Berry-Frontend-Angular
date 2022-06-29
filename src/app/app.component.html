@@ -2,182 +2,182 @@
 
 <!-- TODO add router-outlet -->
 
-  <!-- //**************************************************// -->
-  <!-- //right navbar -->
+<!-- //**************************************************// -->
+<!-- //right navbar -->
 
-  <div class="container-fluid d-lg-flex d-flex justify-content-between align-items-center ">
+<div class="container-fluid d-lg-flex d-flex justify-content-between align-items-center ">
 
-    <div class="d-flex">
-      <img style="max-width: fit-content; width: 270px;" class="p-2 navbar-brand " src="../assets/logo.png"
-        alt="">
-      <form class="d-lg-flex d-none w-100 p-2" (submit)="SearchInProducts(in_search.value)">
-        <input class="form-control"  #in_search type="text" placeholder="ابحث عن ...">
-        <button class=" btnserch" type="submit">بحث</button>
-      </form>
-    </div>
-
-    <div class="d-flex">
-
-      <!-- <a href="/location"> <i class="fas fa-location-dot p-1 mx-1 head d-none" title="أين تجدنا"></i></a> -->
-      <!-- //*******************************************************************// -->
-
-      <!-- //*******************************************************************// -->
-      <!-- //left navbar -->
-
-        <!-- TODO if not auth make it take you to login -->
-
-      <a style="cursor:pointer" data-bs-toggle="offcanvas"
-      data-bs-target="#offcanvasRight" aria-controls="offcanvasRight"> <i class="fas fa-cart-plus p-1 head mx-1" title="السلة"></i></a>
-      <a [routerLink]="'/logInPage'" [attr.data-bs-toggle]="isLoggedIn?'dropdown':''" role="button" aria-haspopup="true" aria-expanded="false"><i
-          class="fas fa-user p-1 head mx-1" title="تسجيل الدخول"></i></a>
-
-      <div class="dropdown-menu log  bg-dark">
-        <a class="dropdown-item text-end  bg-dark text-light" routerLink="/myaccount">حسابي</a>
-        <a class="dropdown-item text-end bg-dark text-light" routerLink="/">الطلبات السابقة</a>
-        <a>
-          <hr class="dropdown-divider text-light ">
-        </a>
-        <a class="dropdown-item text-end  bg-dark text-light" (click)="logout()" routerLink="#">تسجيل الخروج</a>
-      </div>
-
-    </div>
+  <div class="d-flex">
+    <img style="max-width: fit-content; width: 270px;" class="p-2 navbar-brand " src="../assets/logo.png" alt="">
+    <form class="d-lg-flex d-none w-100 p-2" (submit)="SearchInProducts(in_search.value)">
+      <input class="form-control" #in_search type="text" placeholder="ابحث عن ...">
+      <button class=" btnserch" type="submit">بحث</button>
+    </form>
   </div>
 
-  <!-- //*********************************************************// -->
-  <!-- //main navbar -->
+  <div class="d-flex">
 
-  <div class="container-fliud p-0 m-0 nav1">
+    <!-- <a href="/location"> <i class="fas fa-location-dot p-1 mx-1 head d-none" title="أين تجدنا"></i></a> -->
+    <!-- //*******************************************************************// -->
 
-    <nav class="navbar navbar-expand-lg navbar-dark nav2 p-0 m-0">
-      <div class="container p-0 m-0 text-center ">
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
-          aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
+    <!-- //*******************************************************************// -->
+    <!-- //left navbar -->
 
-        <div class="collapse navbar-collapse justify-content-center p-0 m-0" id="navbarColor01">
+    <!-- TODO if not auth make it take you to login -->
+
+    <a style="cursor:pointer" data-bs-toggle="offcanvas" (click)="getproductcart()" data-bs-target="#offcanvasRight"
+      aria-controls="offcanvasRight"> <i class="fas fa-cart-plus p-1 head mx-1" title="السلة"></i></a>
+    <a [routerLink]="isLoggedIn?'':'/logInPage'" [attr.data-bs-toggle]="isLoggedIn?'dropdown':''" role="button" aria-haspopup="true"
+      aria-expanded="false"><i class="fas fa-user p-1 head mx-1" title="تسجيل الدخول"></i></a>
+
+    <div class="dropdown-menu log  bg-dark">
+      <a class="dropdown-item text-end  bg-dark text-light" routerLink="/logInPage">حسابي</a>
+      <a class="dropdown-item text-end bg-dark text-light" routerLink="/">الطلبات السابقة</a>
+      <a>
+        <hr class="dropdown-divider text-light ">
+      </a>
+      <a class="dropdown-item text-end  bg-dark text-light" (click)="logout()" routerLink="#">تسجيل الخروج</a>
+    </div>
+  </div>
+</div>
+
+<!-- //*********************************************************// -->
+<!-- //main navbar -->
+
+<div class="container-fliud p-0 m-0 nav1">
+
+  <nav class="navbar navbar-expand-lg navbar-dark nav2 p-0 m-0">
+    <div class="container p-0 m-0 text-center ">
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01"
+        aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center p-0 m-0" id="navbarColor01">
 
 
-          <a routerLink="/Home" class="nav-link w-100 text-center me-3">
+        <a routerLink="/Home" class="nav-link w-100 text-center me-3">
           <div class="nav-item navblack text-center ">
             <a class="nav-link text-center  text-white h6 w-100">الرئيسية</a>
           </div>
         </a>
 
-          <div class="nav-item dropdown navblack text-center w-100 mx-3" routerLink="/filter" style="cursor: pointer;">
-            <a class="nav-link dropdown-toggle text-white h6" 
-              role="button" aria-haspopup="true" aria-expanded="false">فرد الشعر  </a>
-            <div class="dropdown-menu  bg-dark text-end mt-2 w-100">
-              <a class="dropdown-item  bg-dark text-light" routerLink="">فرشاه فرد الشعر الايونية</a>
-              <a class="dropdown-item  bg-dark text-light" routerLink="">مكواه فرد الشعر بالبخار </a>
-              <a class="dropdown-item  bg-dark text-light" routerLink="">مكواه البخار الاحترافية</a>
+        <div class="nav-item dropdown navblack text-center w-100 mx-3" routerLink="/category/62b5f2a744e1e7fd3e5d6ac3" style="cursor: pointer;">
+          <a class="nav-link dropdown-toggle text-white h6" role="button" aria-haspopup="true" aria-expanded="false">فرد
+            الشعر </a>
+          <div class="dropdown-menu  bg-dark text-end mt-2 w-100">
+            <a class="dropdown-item  bg-dark text-light" routerLink="">فرشاه فرد الشعر الايونية</a>
+            <a class="dropdown-item  bg-dark text-light" routerLink="">مكواه فرد الشعر بالبخار </a>
+            <a class="dropdown-item  bg-dark text-light" routerLink="">مكواه البخار الاحترافية</a>
 
+          </div>
+        </div>
+
+        <div class="nav-item dropdown navblack text-center w-100 mx-3" routerLink="/category/62b5f2a744e1e7fd3e5d6ac4" style="cursor:pointer">
+          <a class="nav-link dropdown-toggle text-white h6" role="button" aria-haspopup="true"
+            aria-expanded="false">تمويج الشعر </a>
+          <div class="dropdown-menu  bg-dark text-end mt-2 w-100">
+            <a class="dropdown-item  bg-dark text-light  " href="#">مجموعة الكيرلي 5 في 1</a>
+            <a class="dropdown-item  bg-dark text-light " href="#">مكواه الكيرلي الاتوماتيك </a>
+          </div>
+        </div>
+
+        <div class="nav-item dropdown navblack text-center w-100 mx-3 " routerLink="/category/62b5f2a744e1e7fd3e5d6ac5" style="cursor:pointer">
+          <a class="nav-link dropdown-toggle text-white h6" role="button" aria-haspopup="true"
+            aria-expanded="false">تجفيف الشعر </a>
+          <div class="dropdown-menu  bg-dark text-end mt-2 w-100">
+            <a class="dropdown-item  bg-dark text-light  " href="#">مجفف الشعر الذكي</a>
+            <a class="dropdown-item  bg-dark text-light" href="#">فرشاه تكثيف الشعر </a>
+          </div>
+        </div>
+
+        <div class="nav-item dropdown navblack text-center w-100 mx-3 " routerLink="/category/62b5f2a744e1e7fd3e5d6ac6" style="cursor:pointer">
+          <a class="nav-link dropdown-toggle text-white h6 dropdown-toggle" role="button" aria-haspopup="true"
+            aria-expanded="false">العنايه بالشعر</a>
+          <div class="dropdown-menu bg-dark text-end mt-2 w-100">
+            <a class="dropdown-item  bg-dark text-light " href="#"> فرشاه التدليك </a>
+            <a class="dropdown-item  bg-dark text-light  " href="#">فرشاه تسليك الشعر </a>
+          </div>
+        </div>
+
+        <a routerLink="/sale" class="nav-link w-100 text-center me-3">
+          <div class="nav-item navblack text-center ">
+            <a class="nav-link text-center  text-white h6 w-100">العروض</a>
+          </div>
+        </a>
+
+      </div>
+    </div>
+
+  </nav>
+</div>
+
+<!-- //**************************************************// -->
+
+<!-- OffCanvas -->
+
+<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+  <div class="offcanvas-header">
+    <!-- <h5 id="offcanvasRightLabel">Offcanvas right</h5> -->
+    <h1>سلتك</h1>
+    <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+  </div>
+  <div class="offcanvas-body">
+    <!-- *ngIf="quantity>0" -->
+    <div class="basket">
+      <div class="overFlowDiv ">
+        <div class="row" *ngFor="let pro of cart;let index=index ">
+          <div class="col-5"><img src="{{pro.item.Imgs[0]}}" alt="error in image"></div>
+          <div class="col-5">
+            <h2 style="font-size: 15px; font-weight:bold;">{{pro.item.Name}}</h2>
+            <p>السعر: {{pro.item.Price}} جنيه</p>
+            <div class="quantityDiv">
+              <button (click)="increase(index)">+</button>
+              <!-- <input min="1" value="{{pro.quantity}}">    -->
+              <input value="{{pro.quantity}}">
+              <button (click)="decrease(index)">-</button>
             </div>
           </div>
-
-          <div class="nav-item dropdown navblack text-center w-100 mx-3"  routerLink="/filter1" style="cursor:pointer">
-            <a class="nav-link dropdown-toggle text-white h6"
-              role="button" aria-haspopup="true" aria-expanded="false">تمويج الشعر  </a>
-            <div class="dropdown-menu  bg-dark text-end mt-2 w-100">
-              <a class="dropdown-item  bg-dark text-light  " href="#">مجموعة الكيرلي 5 في 1</a>
-              <a class="dropdown-item  bg-dark text-light " href="#">مكواه الكيرلي الاتوماتيك </a>
-            </div>
+          <div class="col-2">
+            <button style="border: none; background-color: white;" (click)=" deleteone(index)"> <i
+                class="fa fa-trash sala "></i></button>
+            <span style="margin: 20px 0; text-align: center;">{{pro.item.Price*pro.quantity}}</span>
+            <span>جنيه</span>
           </div>
-
-          <div class="nav-item dropdown navblack text-center w-100 mx-3 " routerLink="/filter2" style="cursor:pointer">
-            <a class="nav-link dropdown-toggle text-white h6" 
-              role="button" aria-haspopup="true" aria-expanded="false">تجفيف الشعر </a>
-            <div class="dropdown-menu  bg-dark text-end mt-2 w-100">
-              <a class="dropdown-item  bg-dark text-light  " href="#">مجفف الشعر الذكي</a>
-              <a class="dropdown-item  bg-dark text-light" href="#">فرشاه تكثيف الشعر </a>
-            </div>
-          </div>
-
-          <div class="nav-item dropdown navblack text-center w-100 mx-3 "routerLink="/filter3" style="cursor:pointer">
-            <a class="nav-link dropdown-toggle text-white h6 dropdown-toggle"
-             role="button" aria-haspopup="true" aria-expanded="false">العنايه بالشعر</a>
-            <div class="dropdown-menu bg-dark text-end mt-2 w-100">
-              <a class="dropdown-item  bg-dark text-light " href="#"> فرشاه التدليك </a>
-              <a class="dropdown-item  bg-dark text-light  " href="#">فرشاه تسليك الشعر </a>
-            </div>
-          </div>
-          
-          <a routerLink="/sale" class="nav-link w-100 text-center me-3">
-            <div class="nav-item navblack text-center ">
-              <a class="nav-link text-center  text-white h6 w-100">العروض</a>
-            </div>
-          </a>
-
+          <hr>
         </div>
       </div>
-
-    </nav>
-  </div>
-
-  <!-- //**************************************************// -->
-
-  <!-- OffCanvas -->
-  
-  <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
-      <div class="offcanvas-header">
-          <!-- <h5 id="offcanvasRightLabel">Offcanvas right</h5> -->
-          <h1>سلتك</h1>
-          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-      </div>
-      <div class="offcanvas-body">
-          <!-- *ngIf="quantity>0" -->
-          <div class="basket">
-              <div class="overFlowDiv ">
-                  <div class="row" *ngFor="let pro of cart;let index=index ">
-                      <div class="col-5"><img src="{{pro.item.Imgs[0]}}" alt="error in image"></div>
-                      <div class="col-5">
-                          <h2 style="font-size: 15px; font-weight:bold;">{{pro.item.Name}}</h2>
-                          <p>السعر: {{pro.item.Price}} جنيه</p>
-                          <div class="quantityDiv">
-                              <button (click)="increase(index)">+</button>
-                              <!-- <input min="1" value="{{pro.quantity}}">    -->
-                              <input value="{{pro.quantity}}">
-                              <button (click)="decrease(index)">-</button>
-                          </div>
-                      </div>
-                      <div class="col-2">
-                          <button style="border: none; background-color: white;" (click)=" deleteone(index)"> <i
-                                  class="fa fa-trash sala "></i></button>
-                          <span style="margin: 20px 0; text-align: center;">{{pro.item.Price*pro.quantity}}</span>
-                          <span>جنيه</span>
-                      </div>
-                      <hr>
-                  </div>
-              </div>
-              <div class="bottomContent">
-                  <hr>
-                  <div class="bg-light p-4" style="direction:ltr ; border-radius: 3px;">
-                      <div class="totalPrice">
-                          <span>{{total}} جنيه</span>
-                          <span style="font-weight: bold;">المجموع :</span>
-                      </div>
-                      <div class="deliverAddress">
-                          <span>مجانا!</span>
-                          <span style="font-weight: bold;">الشحن <i class="fa fa-pencil pen"></i></span>
-                      </div>
-                      <div class="totalPriceAvterService">
-                          <span>{{total}} جنيه</span>
-                          <span style="font-weight: bold;">الإجمالى :</span>
-                      </div>
-                  </div>
-                  <hr>
-                  <div class="buttonsDiv">
-                      <button type="button" class="btn btnClose" data-bs-dismiss="offcanvas" aria-label="Close">تابع التسوق</button>
-                      <div class="flexBTN">
-                        <button class="btn btnCart" routerLink="/cart">سلة التسوق</button>
-                        <a  class="btn not-dark" routerLink="/check-out">اتمام الطلب</a>
-                      </div>
-                  </div>
-              </div>
+      <div class="bottomContent">
+        <hr>
+        <div class="bg-light p-4" style="direction:ltr ; border-radius: 3px;">
+          <div class="totalPrice">
+            <span>{{total}} جنيه</span>
+            <span style="font-weight: bold;">المجموع :</span>
           </div>
+          <div class="deliverAddress">
+            <span>مجانا!</span>
+            <span style="font-weight: bold;">الشحن <i class="fa fa-pencil pen"></i></span>
+          </div>
+          <div class="totalPriceAvterService">
+            <span>{{total}} جنيه</span>
+            <span style="font-weight: bold;">الإجمالى :</span>
+          </div>
+        </div>
+        <hr>
+        <div class="buttonsDiv">
+          <button type="button" class="btn btnClose" data-bs-dismiss="offcanvas" aria-label="Close">تابع التسوق</button>
+          <div class="flexBTN">
+            <button class="btn btnCart" routerLink="/cart">سلة التسوق</button>
+            <a class="btn not-dark" routerLink="/check-out">اتمام الطلب</a>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
+</div>
 
+<div style="min-height: 100vh;">
+  <router-outlet></router-outlet>
+</div>
 
-<router-outlet></router-outlet>
 <app-footer></app-footer>

@@ -1,27 +1,31 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 import { ProductsService } from '../Services/products.service';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  selector: 'app-search',
+  templateUrl: './search.component.html',
+  styleUrls: ['./search.component.scss']
 })
-export class HomeComponent implements OnInit {
-  constructor(private productsservice: ProductsService,private router: Router) {}
 
+export class SearchComponent implements OnInit {
+  
   products: any[] = [];
   cart: any[] = [];
   user: string | undefined;
   amount: number = 1;
 
+  constructor(private router:Router,private activatedRoute: ActivatedRoute,private productsService: ProductsService) { }
+
   ngOnInit(): void {
-    this.productsservice.GetAllProducts().subscribe((productsdata) => {
-      this.products = productsdata;
-      console.log('products', this.products);
-    });
+    this.activatedRoute.paramMap.subscribe((params:ParamMap)=>{
+      this.productsService.SearchProductByName(params.get('searchVal')!).subscribe((data)=>{
+        this.products = data
+      })
+    })
   }
 
+  
   addProduct(product: any) {
     var obj = { item: product, quantity: this.amount };
     console.log(obj);
@@ -44,7 +48,7 @@ export class HomeComponent implements OnInit {
     }
     //  }
   }
-
+  
   goToDetails(id:string) {
     this.router.navigate(['product',id])
   }

@@ -38,7 +38,7 @@ export class Productfilter3Component implements OnInit {
      } else {
        if ('cart' in localStorage) {
          this.cart = JSON.parse(localStorage.getItem('cart')!);
-         var exist= this.cart.find(itemm=>itemm.PID==obj.item.PID)
+         var exist= this.cart.find(itemm=>itemm._id==obj.item._id)
          if (exist) {
            alert('This product is already added');
          } else {

@@ -1,0 +1,33 @@
+<br><br>
+<h2 style="color:  #a51731; font-weight: bold;" class="text-center">نتائج البحث </h2>
+    
+    <br><br><br>
+
+    <div *ngIf="products.length == 0" class="w-100 text-center" style="min-height: 80vh;">لا توجد نتائج</div>
+
+    <div *ngIf="products.length != 0" class="text-center">
+        
+
+        <div class="container-fluid ">
+            <div class="row  rowscr">
+
+                <div *ngFor="let pro of products" class="card  p-3 m-2 imgcart cardscr col-lg-2 col-6 ">
+                    <img src="{{pro.Imgs[0]}}" class="card-img-top w-100 h-50 text-center"
+                        (click)="goToDetails(pro._id)">
+                    <div class="card-body">
+                        <h5 class="card-title text-center bg-light p-1 m-1">{{pro.Name}}</h5>
+                        <!-- <div class="text-center">
+                    <i class="fas fa-sack-dollar dollar"></i>
+                 </div> -->
+                        <p style="color:#a51731; font-weight: bold;   " class="card-text text-center m-2 "><i
+                                class="fab fa-searchengin dollar"></i> EGP {{pro.Price}}</p>
+                        <button (click)="addProduct(pro)" class="btncart">اضافه الي السلة <i
+                                class="fas fa-cart-plus"></i></button>
+
+                    </div>ِ
+                </div>
+            </div>
+        </div>
+
+
+    </div>

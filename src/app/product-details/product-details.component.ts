@@ -104,7 +104,7 @@ export class ProductDetailsComponent implements OnInit {
   //   //  } else {
   //   if ('cart' in localStorage) {
   //     this.cart = JSON.parse(localStorage.getItem('cart')!);
-  //     var exist = this.cart.find((itemm) => itemm.PID == obj.item.PID);
+  //     var exist = this.cart.find((itemm) => itemm._id == obj.item._id);
   //     if (exist) {
   //       alert('This product is already added');
   //     } else {
@@ -162,7 +162,7 @@ export class ProductDetailsComponent implements OnInit {
     }
   }
 
-  CartInLocal: any = JSON.parse(localStorage.getItem('Cart')!);
+  CartInLocal: any = JSON.parse(localStorage.getItem('cart')!);
 
   addToCart(product: any, amount: number) {
     if (this.CartInLocal?.indexOf(product) == -1 || this.CartInLocal == null) {
@@ -177,7 +177,7 @@ export class ProductDetailsComponent implements OnInit {
         listProductsInCart.push({ Product: product, Quantity: amount });
       }
 
-      localStorage.setItem('Cart', JSON.stringify(listProductsInCart));
+      localStorage.setItem('cart', JSON.stringify(listProductsInCart));
 
       //Handle Database Storage if userAuth
       if (this.userAuth) {

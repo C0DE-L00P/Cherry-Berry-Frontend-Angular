@@ -115,7 +115,7 @@
                         </form>
                     </div>
                 </div>
-                <button class="donOrderBTN" (click)="Click()">تأكيد الطلب</button>
+                <button class="donOrderBTN" routerLink="confirm-order">تأكيد الطلب</button>
             </div>
             <div class="col-lg-7 formDiv">
                 <h1 style="font-weight: bold;color: brown;">تفاصيل الفاتورة</h1>
@@ -149,7 +149,7 @@
                             <div *ngIf="(email?.invalid &&email?.touched)||email?.dirty">
                                 <small class="text-danger" *ngIf="email?.errors?.['required']">يجب اضافة بريدك
                                     الالكترونى</small>
-                                <small class="text-danger" *ngIf="email?.errors?.['pattern']"> يجب ادخال ارقام فقط</small>
+                                <small class="text-danger" *ngIf="email?.errors?.['pattern']"> يجب ادخال حساب بصيغة صحيحه </small>
                             </div>
                         </div>
                     </div>

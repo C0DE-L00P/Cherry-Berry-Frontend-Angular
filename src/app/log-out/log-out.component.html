@@ -1,13 +1,14 @@
 <div class="cont">
-    <form [formGroup]="regestrationLogInForm" (submit)="goToAccountManagement()" class="form-cont">
+    <form [formGroup]="regestrationLogInForm" (submit)="goToAccountManagement(email.value,pass.value)" class="form-cont">
         <div class="form-groupd email-cont">
             <label class="email-label">البريد الالكتروني</label>
             <input 
             type="email" 
+            #email
             pattern="^\w+@\w+.com$"
             [class.is-invalid]="emailFeld?.invalid &&emailFeld?.touched"
             formControlName="email" 
-            placeholder=" اسم المستخدم/البريد الالكتروني"
+            placeholder=" اسم المستخدم/البريد الالكتورني"
             dir="ltr"
             class="form-control email-input">
             <div class="text-erorr-contan">
@@ -23,6 +24,7 @@
         <div class="form-group email-cont">
             <label class="email-label">كلمة السر</label>
             <input 
+            #pass
             type="password" 
             [class.is-invalid]="passwordFeld?.invalid &&passwordFeld?.touched"
             formControlName="passward"

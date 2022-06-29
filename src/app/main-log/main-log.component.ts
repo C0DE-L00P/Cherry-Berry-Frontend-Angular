@@ -10,12 +10,11 @@ export class MainLogComponent implements OnInit {
 
   constructor(private router : Router) { }
 
-  hasabackground:boolean=true;
-  hasabackgrounde:boolean=false;
+  hasabackground:boolean=false;
+  hasabackgrounde:boolean=true;
 
   
   ngOnInit(): void {
     this.router.navigate(["/logInPage/logIn"])
   }
-
 }

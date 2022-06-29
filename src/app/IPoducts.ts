@@ -1,6 +1,6 @@
 export interface IProducts
 {
-    PID:number,
+    _id:number,
     Name:string,
     Brand:string,
     Imgs:string,
